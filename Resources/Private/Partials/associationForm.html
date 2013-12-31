@@ -1,0 +1,38 @@
+{namespace mwt=Tx_EcAssociation_ViewHelpers}
+
+<f:form object="{association}" name="association" action="{action}">
+
+	<f:form.errors for="association">
+		<div style="background-color: #fdd; padding: 12px;">
+			<f:for each="{error.errors}" as="fieldError">
+				<f:translate key="Association_Error_{error.propertyName}_{fieldError.code}" default="Association_Error_{error.propertyName}_{fieldError.code}" />
+			</f:for>
+		</div>
+	</f:form.errors>
+
+	<table>
+		<tr>
+			<td><label for="association"><f:translate key="Association_Form_Parent" /></label></td>
+			<td>
+				<f:form.select property="association" options="{associations}" optionLabelField="name" />
+			</td>
+		</tr><tr>
+			<td><label for="name"><f:translate key="Association_Form_Name" /></label></td>
+			<td>
+				<f:form.textbox property="name" />
+			</td>
+		</tr><tr>
+			<td><f:translate key="Association_Form_Members" /></td>
+			<td>
+				<table>
+					<f:for each="{users}" as="user">
+						<tr>
+							<td>{user.name}</td>
+						</tr>
+					</f:for>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<f:form.submit value="{f:translate(key:'Association_Form_Save')}" />
+</f:form>

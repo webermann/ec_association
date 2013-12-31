@@ -1,0 +1,20 @@
+{namespace mwt=Tx_EcAssociation_ViewHelpers}
+
+<f:if condition="{associations}">
+	<table>
+		<thead>
+			<tr>
+				<th><f:translate key="Association_Index_Name" /></th>
+				<th><f:translate key="Association_Index_Members" /></th>
+				<th><f:translate key="Association_Index_WorkedTime" /></th>
+			</tr>
+		</thead>
+		<f:for each="{associations}" as="association">
+			<tr>
+				<td><f:link.action action="show" arguments="{ association : association }">{association.name}</f:link.action></td>
+				<td><f:count subject="{association.assignments}" /> <f:translate key="Association_Index_Members_Unit" /></td>
+				<td><mwt:timeFormat amount="{association.workedTime}" /></td>
+			</tr>
+		</f:for>
+	</table>
+</f:if>

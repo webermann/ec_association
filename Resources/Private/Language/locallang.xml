@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the ec_association extension</description>
+	</meta>
+	<data type="array">
+			<!--  ENGLISH LANGUAGE DATA -->
+		<languageKey index="default" type="array">
+
+				<!-- PROJECT: INDEX ACTION -->
+			<label index="Association_Index_Title">Associations</label>
+			<label index="Association_Index_Name">Association name</label>
+			<label index="Association_Index_Members">Members</label>
+			<label index="Association_Index_Members_Unit">Members</label>
+			<label index="Association_Index_WorkedTime">Worked time</label>
+			<label index="Association_Index_Action_New">New association</label>
+
+				<!-- PROJECT: SHOW ACTION -->
+			<label index="Association_Show_Title">Association details: %s</label>
+			<label index="Association_Show_Action_Back">Back</label>
+			<label index="Association_Show_Action_Edit">Edit</label>
+			<label index="Association_Show_Action_Delete">Delete</label>
+			<label index="Association_Show_Action_NewTimeset">New timeset</label>
+			<label index="Association_Show_Action_ListTimesets">List all timesets</label>
+			<label index="Association_Show_StartDate">Start date</label>
+			<label index="Association_Show_EndDate">End date</label>
+			<label index="Association_Show_Children">Sub-Associations</label>
+			<label index="Association_Show_Members">Members</label>
+			<label index="Association_Show_Members_Name">Member name</label>
+
+				<!-- PROJECT: NEW/EDIT ACTIONS -->
+			<label index="Association_Edit_Title">Edit association: %s</label>
+			<label index="Association_New_Title">New association</label>
+			<label index="Association_Form_Parent">Parent association</label>
+			<label index="Association_Form_Name">Name</label>
+			<label index="Association_Form_Members">Members</label>
+			<label index="Association_Form_Save">Save</label>
+			
+				<!-- PROJECT ERRORS -->
+			<label index="Association_Error_name_1238108067">The minimum length for the association name is 3 characters.</label>
+
+				<!-- VIEWHELPERS: TIME UNITS -->
+			<label index="ViewHelper_Unit_Hours">hours</label>
+			<label index="ViewHelper_Unit_Minutes">minutes</label>
+			<label index="ViewHelper_Unit_Days">days</label>
+			<label index="ViewHelper_Unit_Seconds">seconds</label>
+
+				<!-- GENERAL ERRORS -->
+			<label index="Error_Title">Error</label>
+			<label index="Error_Subtitle">Error #%d</label>
+			<label index="Error_1266412844">You have to be member of a association to create timesets!</label>
+		</languageKey>
+
+
+
+			<!--  GERMAN LANGUAGE DATA -->
+
+		<languageKey index="de" type="array">
+
+				<!-- PROJECT: INDEX ACTION -->
+			<label index="Association_Index_Title">Projekte</label>
+			<label index="Association_Index_Name">Projektname</label>
+			<label index="Association_Index_Members">Mitglieder</label>
+			<label index="Association_Index_Members_Unit">Mitglieder</label>
+			<label index="Association_Index_WorkedTime">Aufgewendete Zeit</label>
+			<label index="Association_Index_Action_New">Neues Projekt</label>
+
+				<!-- PROJECT: SHOW ACTION -->
+			<label index="Association_Show_Title">Projektdetails: %s</label>
+			<label index="Association_Show_Action_Back">Zurück</label>
+			<label index="Association_Show_Action_Edit">Bearbeiten</label>
+			<label index="Association_Show_Action_Delete">Löschen</label>
+			<label index="Association_Show_Action_NewTimeset">Neue Zeitbuchung</label>
+			<label index="Association_Show_Action_ListTimesets">Zeitbuchungen anzeigen</label>
+			<label index="Association_Show_StartDate">Startdatum</label>
+			<label index="Association_Show_EndDate">Endatum</label>
+			<label index="Association_Show_Children">Unterprojekte</label>
+			<label index="Association_Show_Members">Mitglieder</label>
+			<label index="Association_Show_Members_Name">Mitarbeitername</label>
+
+				<!-- PROJECT: NEW/EDIT ACTIONS -->
+			<label index="Association_Edit_Title">Projekt bearbeiten: %s</label>
+			<label index="Association_New_Title">Neues Projekt</label>
+			<label index="Association_Form_Parent">Übergeordnetes Projekt</label>
+			<label index="Association_Form_Name">Name</label>
+			<label index="Association_Form_Members">Mitglieder</label>
+			<label index="Association_Form_Save">Speichern</label>
+
+				<!-- PROJECT ERRORS -->
+			<label index="Association_Error_name_1238108067">Der Projektname muss mindestens 3 Zeichen lang sein.</label>
+
+				<!-- VIEWHELPERS: TIME UNITS -->
+			<label index="ViewHelper_Unit_Hours">Stunden</label>
+			<label index="ViewHelper_Unit_Minutes">Minuten</label>
+			<label index="ViewHelper_Unit_Days">Tage</label>
+			<label index="ViewHelper_Unit_Seconds">Sekunden</label>
+
+				<!-- GENERAL ERRORS -->
+			<label index="Error_Title">Fehler</label>
+			<label index="Error_Subtitle">Fehler #%d</label>
+			<label index="Error_1266412844">Sie müssen Mitglied in einem Projekt sein, um Zeiten buchen zu können!</label>
+		</languageKey>
+	</data>
+</T3locallang>

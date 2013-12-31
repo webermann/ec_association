@@ -1,0 +1,49 @@
+{namespace mwt=Tx_EcAssociation_ViewHelpers}
+
+<f:layout name="main" />
+
+	<!-- TITLE -->
+<f:section name="title">
+	<f:translate key="Association_Show_Title" arguments="{0: association.name}" />
+</f:section>
+
+	<!-- MENU -->
+<f:section name="menu">
+	<ul>
+		<li><f:link.action action="index"><f:translate key="Association_Show_Action_Back" /></f:link.action></li>
+		<li><f:link.action action="edit" arguments="{association : association}"><f:translate key="Association_Show_Action_Edit" /></f:link.action></li>
+		<li><f:link.action action="delete" arguments="{association : association}"><f:translate key="Association_Show_Action_Delete" /></f:link.action></li>
+		<li><f:link.action action="new" controller="Timeset" arguments="{association : association}"><f:translate key="Association_Show_Action_NewTimeset" /></f:link.action></li>
+		<li><f:link.action action="index" controller="Timeset" arguments="{association : association}"><f:translate key="Association_Show_Action_ListTimesets" /></f:link.action></li>
+	</ul>
+</f:section>
+
+<f:section name="content">
+		<!-- PROJECT INFO -->
+	<table>
+		<tr>
+			<td><f:translate key="Association_Show_StartDate" /></td><td><f:format.date format="d. m. Y">{association.start}</f:format.date></td>
+		</tr><tr>
+			<td><f:translate key="Association_Show_EndDate" /></td><td><f:format.date format="d. m. Y">{association.end}</f:format.date></td>
+		</tr>
+	</table>
+
+		<!-- SUB PROJECTS -->
+	<f:if condition="{association.children}">
+		<h3><f:translate key="Association_Show_Children" /></h3>
+		<f:render partial="associationList" arguments="{associations : association.children}" />
+	</f:if>
+
+		<!-- MEMBERS -->
+	<h3><f:translate key="Association_Show_Members" /></h3>
+	<table>
+		<tr>
+			<th><f:translate key="Association_Show_Members_Name" /></th>
+		</tr>
+		<f:for each="{association.assignments}" as="assignment">
+			<tr>
+				<td>{assignment.user.name}</td>
+			</tr>
+		</f:for>
+	</table>
+</f:section>

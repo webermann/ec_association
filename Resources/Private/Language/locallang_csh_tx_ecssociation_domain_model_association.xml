@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Context Sensitive Help (CSH) for table tx_ecassociation_domain_model_association</description>
+        <type>CSH</type>
+        <csh_table>tx_ecassociation_domain_model_association</csh_table>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+			<label index="name.description">The association name</label>
+			<label index="start.description">The association start time</label>
+			<label index="end.description">The association end time</label>
+			<label index="assignments.description">assignments</label>
+			<label index="children.description">children</label>
+		</languageKey>
+    </data>
+</T3locallang>
