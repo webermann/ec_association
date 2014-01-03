@@ -7,7 +7,11 @@
     <data type="array">
         <languageKey index="default" type="array">
             <label index="mlang_tabs_tab">Association</label>
-            <label index="mlang_labels_tabdescr">EC Association Extension</label>
+            <label index="mlang_labels_tabdescr">Association Extension</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="mlang_tabs_tab">Verband/Kreis</label>
+            <label index="mlang_labels_tabdescr">Verbands Extension</label>
         </languageKey>
     </data>
 </T3locallang>

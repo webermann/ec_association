@@ -8,10 +8,17 @@
 		<languageKey index="default" type="array">
 			<label index="tx_ecassociation_domain_model_association">Association</label>
 			<label index="tx_ecassociation_domain_model_association.name">Name</label>
-			<label index="tx_ecassociation_domain_model_association.start">Start</label>
-			<label index="tx_ecassociation_domain_model_association.end">End</label>
-			<label index="tx_ecassociation_domain_model_association.assignments">Assignments</label>
-			<label index="tx_ecassociation_domain_model_association.children">Children</label>
+			<label index="tx_ecassociation_domain_model_association.subassociation">Sub Association</label>
+			<label index="tx_ecassociation_domain_model_group">Group</label>
+			<label index="tx_ecassociation_domain_model_group.name">Name</label>
+			
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_ecassociation_domain_model_association">Verband</label>
+			<label index="tx_ecassociation_domain_model_association.name">Name</label>
+			<label index="tx_ecassociation_domain_model_association.subassociation">Unter Verband</label>
+			<label index="tx_ecassociation_domain_model_group">Gruppe</label>
+			<label index="tx_ecassociation_domain_model_group.name">Name</label>
 		</languageKey>
 	</data>
 </T3locallang>

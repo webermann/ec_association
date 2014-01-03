@@ -28,66 +28,40 @@
 
 	/**
 	 *
-	 * A ViewHelper for displaying a user role select field. In addition to the
-	 * SelectViewHelper, this ViewHelper takes a "association" and a "user" argument. The
-	 * "options" argument must contain an array of user role objects.
+	 * The association repository class. Provides methods for accessing the association table.
 	 *
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
-	 * @subpackage ViewHelpers
-	 * @version    $Id: UserRoleViewHelper.php 17 2010-03-03 09:26:45Z helmich $
+	 * @subpackage Domain_Repository
+	 * @version    $Id: GroupRepository.php 28 2010-09-20 12:26:13Z helmich $
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 *
 	 */
 
-Class Tx_EcAssociation_ViewHelpers_Form_UserRoleViewHelper Extends Tx_Fluid_ViewHelpers_Form_SelectViewHelper {
+Class Tx_EcAssociation_Domain_Repository_GroupRepository Extends Tx_Extbase_Persistence_Repository {
 
 
 
 		/**
 		 *
-		 * Initializes the ViewHelper arguments.
-		 * @return void
+		 * Finds all associations for an index view. The parent association can be specified
+		 * using the $parent parameter (NULL by default). All associations are ordered by the
+		 * association name in ascending order.
+		 *
+		 * @param  Tx_EcAssociation_Domain_Model_Group $parent The parent association
+		 * @return Array<Tx_EcAssociation_Domain_Model_Group>  The result list.
 		 *
 		 */
 
-	Public Function initializeArguments() {
-		parent::initializeArguments();
-		$this->registerArgument ( 'association', 'Tx_EcAssociation_Domain_Model_Association', '', TRUE );
-		$this->registerArgument ( 'user'   , 'Tx_Extbase_Domain_Model_FrontendUser'     , '', TRUE );
-	}
+	Public Function findForIndexView ( Tx_EcAssociation_Domain_Model_Group $parent=NULL ) {
 
+		$query = $this->createQuery();
+		Return $query
+			->matching($query->equals('group', $parent ? $parent : Array(0,NULL) ))
+			->setOrderings(Array('name' => Tx_Extbase_Persistence_Query::ORDER_ASCENDING))
+			->execute();
 
-
-		/**
-		 *
-		 * Gets the selectable options for this select field. This methods overrides the
-		 * respective method in the Tx_Fluid_ViewHelpers_Form_SelectViewHelper class.
-		 * @return array The selectable options for this select field.
-		 *
-		 */
-
-	Protected Function getOptions() {
-		$options = Array(0 => 'Kein Mitglied');
-		ForEach($this->arguments['options'] As $option) {
-			If($option InstanceOf Tx_EcAssociation_Domain_Model_Role)
-				$options[$option->getUid()] = $option->getName();
-		} Return $options;
-	}
-
-
-		/**
-		 *
-		 * Gets the name of the form field. This method overrides the respective method
-		 * of the Tx_Fluid_ViewHelpers_Form_SelectViewHelper class.
-		 *
-		 * @return string The form field name
-		 *
-		 */
-
-	Protected Function getName() {
-		Return parent::getName().'['.$this->arguments['user']->getUid().']';
 	}
 
 }

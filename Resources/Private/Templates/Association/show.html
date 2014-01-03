@@ -28,22 +28,10 @@
 		</tr>
 	</table>
 
-		<!-- SUB PROJECTS -->
-	<f:if condition="{association.children}">
-		<h3><f:translate key="Association_Show_Children" /></h3>
-		<f:render partial="associationList" arguments="{associations : association.children}" />
+		<!-- SUB Association -->
+	<f:if condition="{association.subassociation}">
+		<h3><f:translate key="Association_Show_Subassociation" /></h3>
+		<f:render partial="associationList" arguments="{associations : association.subassociation}" />
 	</f:if>
 
-		<!-- MEMBERS -->
-	<h3><f:translate key="Association_Show_Members" /></h3>
-	<table>
-		<tr>
-			<th><f:translate key="Association_Show_Members_Name" /></th>
-		</tr>
-		<f:for each="{association.assignments}" as="assignment">
-			<tr>
-				<td>{assignment.user.name}</td>
-			</tr>
-		</f:for>
-	</table>
 </f:section>

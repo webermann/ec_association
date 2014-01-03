@@ -26,23 +26,14 @@
 
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-Tx_Extbase_Utility_Extension::registerPlugin ( $_EXTKEY, 'Pi1', ' An association extension' );
+Tx_Extbase_Utility_Extension::registerPlugin ($_EXTKEY, 'Pi1', 'Association extension');
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Association');
 
-If ( TYPO3_MODE === 'BE' )
-    Tx_Extbase_Utility_Extension::registerModule ( $_EXTKEY,
-	                                            'web',
-	                                            'tx_ecassociation_m1',
-	                                            '',
-	                                            Array ( 'Backend' => 'index' ),
-	                                            Array ( 'access' => 'user,group',
-	                                                    'icon'   => 'EXT:ec_association/ext_icon.gif',
-	                                                    'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod.xml' ) );
+
 
 t3lib_extMgm::addLLrefForTCAdescr       ( 'tx_ecassociation_domain_model_association',
                                           'EXT:ec_association/Resources/Private/Language/locallang_csh_tx_ecassociation_domain_model_association.xml' );
 t3lib_extMgm::allowTableOnStandardPages ( 'tx_ecassociation_domain_model_association');
-
 $TCA['tx_ecassociation_domain_model_association'] = array (
 	'ctrl' => array (
 		'title'                    => 'LLL:EXT:ec_association/Resources/Private/Language/locallang_db.xml:tx_ecassociation_domain_model_association',
@@ -57,10 +48,31 @@ $TCA['tx_ecassociation_domain_model_association'] = array (
 		'transOrigDiffSourceField' => 'l18n_diffsource',
 		'delete'                   => 'deleted',
 		'enablecolumns'            => array ( 'disabled' => 'hidden' ),
-		'dynamicConfigFile'        => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/association.php',
+		'dynamicConfigFile'        => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Association.php',
 		'iconfile'                 => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ecassociation_domain_model_association.gif'
 	)
 );
 
+t3lib_extMgm::addLLrefForTCAdescr       ( 'tx_ecassociation_domain_model_group',
+                                          'EXT:ec_association/Resources/Private/Language/locallang_csh_tx_ecassociation_domain_model_group.xml' );
+t3lib_extMgm::allowTableOnStandardPages ( 'tx_ecassociation_domain_model_group');
+$TCA['tx_ecassociation_domain_model_group'] = array (
+	'ctrl' => array (
+		'title'                    => 'LLL:EXT:ec_association/Resources/Private/Language/locallang_db.xml:tx_ecassociation_domain_model_group',
+		'label'                    => 'name',
+		'tstamp'                   => 'tstamp',
+		'crdate'                   => 'crdate',
+		'versioningWS'             => 2,
+		'versioning_followPages'   => TRUE,
+		'origUid'                  => 't3_origuid',
+		'languageField'            => 'sys_language_uid',
+		'transOrigPointerField'    => 'l18n_parent',
+		'transOrigDiffSourceField' => 'l18n_diffsource',
+		'delete'                   => 'deleted',
+		'enablecolumns'            => array ( 'disabled' => 'hidden' ),
+		'dynamicConfigFile'        => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Group.php',
+		'iconfile'                 => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ecassociation_domain_model_group.gif'
+	)
+);
 
 ?>

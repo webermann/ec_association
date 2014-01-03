@@ -28,66 +28,63 @@
 
 	/**
 	 *
-	 * A ViewHelper for displaying a user role select field. In addition to the
-	 * SelectViewHelper, this ViewHelper takes a "association" and a "user" argument. The
-	 * "options" argument must contain an array of user role objects.
+	 * Abstract basis controller class for all timetracking controller classes. This
+	 * class implements a basic error handling that catches all exception throws within
+	 * a mittwald_timetrack controller or in the domain model.
 	 *
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
-	 * @subpackage ViewHelpers
-	 * @version    $Id: UserRoleViewHelper.php 17 2010-03-03 09:26:45Z helmich $
+	 * @subpackage Controller
+	 * @version    $Id: AbstractController.php 27 2010-09-15 07:58:06Z helmich $
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 *
 	 */
 
-Class Tx_EcAssociation_ViewHelpers_Form_UserRoleViewHelper Extends Tx_Fluid_ViewHelpers_Form_SelectViewHelper {
+Abstract Class Tx_EcAssociation_Controller_AbstractController Extends Tx_Extbase_MVC_Controller_ActionController {
 
 
 
 		/**
 		 *
-		 * Initializes the ViewHelper arguments.
+		 * Handles an exception. This methods modifies the controller context for the
+		 * template view, causing the view class to look in the same directory regardless
+		 * of the controller.
+		 *
+		 * @param Tx_EcAssociation_Domain_Exception_AbstractException $e The exception that is to be handled
 		 * @return void
 		 *
 		 */
 
-	Public Function initializeArguments() {
-		parent::initializeArguments();
-		$this->registerArgument ( 'association', 'Tx_EcAssociation_Domain_Model_Association', '', TRUE );
-		$this->registerArgument ( 'user'   , 'Tx_Extbase_Domain_Model_FrontendUser'     , '', TRUE );
+	Protected Function handleError(Tx_EcAssociation_Domain_Exception_AbstractException $e) {
+		$controllerContext = $this->buildControllerContext();
+		$controllerContext->getRequest()->setControllerName('Default');
+		$controllerContext->getRequest()->setControllerActionName('error');
+		$this->view->setControllerContext($controllerContext);
+
+		$content = $this->view->assign('exception', $e)->render('error');
+		$this->response->appendContent($content);
 	}
 
 
 
 		/**
 		 *
-		 * Gets the selectable options for this select field. This methods overrides the
-		 * respective method in the Tx_Fluid_ViewHelpers_Form_SelectViewHelper class.
-		 * @return array The selectable options for this select field.
+		 * Calls a controller action. This method wraps the callActionMethod method of
+		 * the parent Tx_Extbase_MVC_Controller_ActionController class. It catches all
+		 * Exceptions that might be thrown inside one of the action methods.
+		 * This method ONLY catches exceptions that belong to the mittwald_timetrack
+		 * extension. All other exceptions are not catched.
+		 *
+		 * @return void
 		 *
 		 */
 
-	Protected Function getOptions() {
-		$options = Array(0 => 'Kein Mitglied');
-		ForEach($this->arguments['options'] As $option) {
-			If($option InstanceOf Tx_EcAssociation_Domain_Model_Role)
-				$options[$option->getUid()] = $option->getName();
-		} Return $options;
-	}
-
-
-		/**
-		 *
-		 * Gets the name of the form field. This method overrides the respective method
-		 * of the Tx_Fluid_ViewHelpers_Form_SelectViewHelper class.
-		 *
-		 * @return string The form field name
-		 *
-		 */
-
-	Protected Function getName() {
-		Return parent::getName().'['.$this->arguments['user']->getUid().']';
+	Protected Function callActionMethod() {
+		Try { parent::callActionMethod(); }
+		Catch(Tx_EcAssociation_Domain_Exception_AbstractException $e) {
+			$this->handleError($e);
+		}
 	}
 
 }

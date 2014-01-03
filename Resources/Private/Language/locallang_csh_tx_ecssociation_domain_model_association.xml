@@ -8,10 +8,11 @@
     <data type="array">
         <languageKey index="default" type="array">
 			<label index="name.description">The association name</label>
-			<label index="start.description">The association start time</label>
-			<label index="end.description">The association end time</label>
-			<label index="assignments.description">assignments</label>
-			<label index="children.description">children</label>
+			<label index="subassociation.description">Sub Association</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="name.description">Der Verband/Kreis Name</label>
+			<label index="subassociation.description">Die unter Verbände/Kreise</label>
 		</languageKey>
     </data>
 </T3locallang>

@@ -35,27 +35,28 @@
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
 	 * @subpackage Domain_Model
-	 * @version    $Id: Association.php 28 2010-09-20 12:26:13Z helmich $
+	 * @version    $Id: Group.php 28 2010-09-20 12:26:13Z helmich $
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 * @entity
 	 *
 	 */
 
-Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_AbstractEntity {
+Class Tx_EcAssociation_Domain_Model_Group Extends Tx_Extbase_DomainObject_AbstractEntity {
+
 		/*
 		 * ATTRIBUTES
 		 */
 		/**
 		 * The association name
 		 * @var string
-		 * @validate StringLength(minimum = 3, maximum = 255)
+		 * @validate StringLength(minimum = 3, maximum = 255) || EmailAddress
 		 */
 	Protected $name;
 
 		/**
 		 * The parent association. For toplevel associations, this attribute is NULL
-		 * @var Tx_EcAssociation_Domain_Model_Association
+		 * @var Tx_EcAssociation_Domain_Model_Group
 		 */
 	Protected $association=NULL;
 
@@ -65,26 +66,11 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		 */
 	Protected $tstamp;
 
-		/**
-		 * The sub-associations of this association.
-		 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_EcAssociation_Domain_Model_Association>
-		 * @lazy
-		 * @cascade remove
-		 */
-	Protected $subassociation;
-
-		/**
-		 * A caching array for the groups of this association.
-		 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_EcAssociation_Domain_Model_Group>
-		 * @lazy
-		 * @cascade remove
-		 */
-	Protected $groups = NULL;
-
 
 		/*
 		 * CONSTRUCTORS
 		 */
+
 		 /**
 		  *
 		  * Creates a new association.
@@ -92,7 +78,7 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		  */
 
 	Public Function __construct() {
-		
+		$this->assignments = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
 		/*
@@ -106,31 +92,25 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		  *
 		  */
 
-	Public Function getName() {
-		Return $this->name;
-	}
+	Public Function getName() { Return $this->name; }
 
 		/**
 		 *
 		 * Gets the parent association.
-		 * @return Tx_EcAssociation_Domain_Model_Association The parent association
+		 * @return Tx_EcAssociation_Domain_Model_Group The parent association
 		 *
 		 */
 
-	Public Function getParent() {
-		Return $this->association;
-	}
+	Public Function getParent() { Return $this->association; }
 
 		/**
 		 *
 		 * Gets the parent association.
-		 * @return Tx_EcAssociation_Domain_Model_Association The parent association
+		 * @return Tx_EcAssociation_Domain_Model_Group The parent association
 		 *
 		 */
 
-	Public Function getAssociation() {
-		Return $this->association;
-	}
+	Public Function getAssociation() { Return $this->association; }
 
 		/**
 		 *
@@ -139,33 +119,7 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		 *
 		 */
 
-	Public Function getEditDate() {
-		Return $this->tstamp;
-	}
-
-		/**
-		 *
-		 * Gets all sub associations for this association.
-		 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Association>
-		 *
-		 */
-
-	Public Function getSubassociation() {
-		Return $this->subassociation;
-	}
-
-		/**
-		 *
-		 * Gets all groups for this association.
-		 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Extbase_Domain_Model_Group>
-		 *
-		 */
-
-	Public Function getGroups() {
-		Return $this->groups;
-	}
-
-
+	Public Function getEditDate() { Return $this->tstamp; }
 
 		/*
 		 * SETTERS
@@ -179,48 +133,29 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		  *
 		  */
 
-	Public Function setName($name) {
-		$this->name = $name;
-	}
+	Public Function setName($name) { $this->name = $name; }
 
 		/**
 		 *
 		 * Sets the parent association
-		 * @param Tx_EcAssociation_Domain_Model_Association $parent The parent association
+		 * @param Tx_EcAssociation_Domain_Model_Group $parent The parent association
 		 * @return void
 		 *
 		 */
 
-	Public Function setParent(Tx_EcAssociation_Domain_Model_Association $parent=NULL) {
-		$this->parent = $parent;
-	}
+	Public Function setParent(Tx_EcAssociation_Domain_Model_Group $parent=NULL) { $this->parent = $parent; }
 
 		/**
 		 *
 		 * Adds a new subassociation.
 		 *
-		 * @param Tx_EcAssociation_Domain_Model_Association $association The new subassociation
+		 * @param Tx_EcAssociation_Domain_Model_Group $association The new subassociation
 		 * @return void
 		 *
 		 */
 
-	Public Function addSubassociation(Tx_EcAssociation_Domain_Model_Association $association) {
-		$association->setParent($this);
-		$this->subassociation->attach($association);
-	}
-	
-		/**
-		 *
-		 * Adds a new group.
-		 *
-		 * @param Tx_EcAssociation_Domain_Model_Group $groups The new group
-		 * @return void
-		 *
-		 */
-
-	Public Function addGroup(Tx_EcAssociation_Domain_Model_Group $group) {
-		$association->setParent($this);
-		$this->groups->attach($group);
+	Public Function setAssociation(Tx_EcAssociation_Domain_Model_Association $association) {
+		$this->association = $association;
 	}
 
 }
