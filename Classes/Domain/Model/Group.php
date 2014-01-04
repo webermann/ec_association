@@ -35,7 +35,7 @@
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
 	 * @subpackage Domain_Model
-	 * @version    $Id: Group.php 28 2010-09-20 12:26:13Z helmich $
+	 * @version    $Id$
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 * @entity
@@ -56,7 +56,7 @@ Class Tx_EcAssociation_Domain_Model_Group Extends Tx_Extbase_DomainObject_Abstra
 
 		/**
 		 * The parent association. For toplevel associations, this attribute is NULL
-		 * @var Tx_EcAssociation_Domain_Model_Group
+		 * @var Tx_EcAssociation_Domain_Model_Association
 		 */
 	Protected $association=NULL;
 
@@ -106,7 +106,7 @@ Class Tx_EcAssociation_Domain_Model_Group Extends Tx_Extbase_DomainObject_Abstra
 		/**
 		 *
 		 * Gets the parent association.
-		 * @return Tx_EcAssociation_Domain_Model_Group The parent association
+		 * @return Tx_EcAssociation_Domain_Model_Association The parent association
 		 *
 		 */
 
@@ -149,7 +149,7 @@ Class Tx_EcAssociation_Domain_Model_Group Extends Tx_Extbase_DomainObject_Abstra
 		 *
 		 * Adds a new subassociation.
 		 *
-		 * @param Tx_EcAssociation_Domain_Model_Group $association The new subassociation
+		 * @param Tx_EcAssociation_Domain_Model_Association $association The Association
 		 * @return void
 		 *
 		 */

@@ -35,7 +35,7 @@
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
 	 * @subpackage Domain_Model
-	 * @version    $Id: Association.php 28 2010-09-20 12:26:13Z helmich $
+	 * @version    $Id$
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 * @entity

@@ -28,12 +28,10 @@
 
 If(!defined('TYPO3_MODE')) Die ('Access denied.');
 
-//require_once(t3lib_extMgm::extPath('ec_association') . 'Classes/ViewHelpers/dBug.php');
-
 Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY, 'Pi1',
-	Array ( 'Association' => 'index,show,new,create,delete,edit,update' ),
-	Array ( 'Association' => 'index,show,new,create,delete,edit,update')
+	Array ( 'Association' => 'index,show' ),
+	Array ( 'Association' => 'index,show' )
 );
 
 ?>

@@ -34,7 +34,7 @@
 	 * @author     Hauke Webermann <hauke@webermann.net>
 	 * @package    EcAssociation
 	 * @subpackage Controller
-	 * @version    $Id: AssociationController.php 27 2010-09-15 07:58:06Z helmich $
+	 * @version    $Id$
 	 * @license    GNU Public License, version 2
 	 *             http://opensource.org/licenses/gpl-license.php
 	 *
