@@ -4,10 +4,10 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 $TCA['tx_ecassociation_domain_model_association'] = array(
 	'ctrl' => $TCA['tx_ecassociation_domain_model_association']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'name,subassociation,groups'
+		'showRecordFieldList' => 'name,association,groups'
 	),
 	'types' => array(
-		'1' => array('showitem' => 'name,subassociation,groups')
+		'1' => array('showitem' => 'name,association,groups')
 	),
 	'palettes' => array(
 		'1' => array('showitem' => '')
@@ -67,7 +67,7 @@ $TCA['tx_ecassociation_domain_model_association'] = array(
 				'eval' => 'trim,required'
 			)
 		),
-		'subassociation' => array(
+		'association' => array(
 			'exclude' => 0,
 			'label'   => 'LLL:EXT:ec_association/Resources/Private/Language/locallang_db.xml:tx_ecassociation_domain_model_association.subassociation',
 			'config'  => array(
@@ -79,16 +79,6 @@ $TCA['tx_ecassociation_domain_model_association'] = array(
 					'collapse' => 0,
 					'levelLinkPosition' => 'bottom',
 				),
-			)
-		),
-		'association' => array(
-			'exclude' => 0,
-			'label'   => 'LLL:EXT:ec_association/Resources/Private/Language/locallang_db.xml:tx_ecassociation_domain_model_association',
-			'config' => array(
-				'type' => 'select',
-				'foreign_class' => 'Tx_EcAssociation_Domain_Model_Association',
-				'foreign_table' => 'tx_ecassociation_domain_model_association',
-				'maxitems' => 1
 			)
 		),
 		'groups' => array(

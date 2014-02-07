@@ -143,7 +143,7 @@ Class Tx_EcAssociation_Domain_Model_Group Extends Tx_Extbase_DomainObject_Abstra
 		 *
 		 */
 
-	Public Function setParent(Tx_EcAssociation_Domain_Model_Group $parent=NULL) { $this->parent = $parent; }
+	Public Function setParent(Tx_EcAssociation_Domain_Model_Group $parent=NULL) { $this->association = $parent; }
 
 		/**
 		 *

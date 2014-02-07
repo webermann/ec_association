@@ -2,10 +2,8 @@ CREATE TABLE tx_ecassociation_domain_model_association (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	
-	association int(11) unsigned DEFAULT '0' NOT NULL,
 	name tinytext,
-	subassociation int(11) unsigned DEFAULT '0' NOT NULL,
-	groups int(11) unsigned DEFAULT '0' NOT NULL,
+	association int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -58,4 +56,8 @@ CREATE TABLE tx_ecassociation_domain_model_group (
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
+);
+
+CREATE TABLE fe_users (
+	tx_ecassociation_group int(11) unsigned DEFAULT '0'
 );

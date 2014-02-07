@@ -75,4 +75,24 @@ $TCA['tx_ecassociation_domain_model_group'] = array (
 	)
 );
 
+//**************************************************//
+// USER | Erweiterung fe_users um Feld group
+//**************************************************//
+t3lib_div::loadTCA('fe_users');
+$addColumnArray = array(
+	'tx_ecassociation_group' => array(
+		'exclude' => 0,
+		'label'   => 'LLL:EXT:ec_association/Resources/Private/Language/locallang_db.xml:tx_ecassociation_domain_model_group',
+		'config' => array(
+			'type' => 'select',
+			'foreign_class' => 'Tx_EcAssociation_Domain_Model_Group',
+			'foreign_table' => 'tx_ecassociation_domain_model_group',
+			'maxitems' => 1,
+		)
+	),
+);
+t3lib_extMgm::addTCAcolumns('fe_users', $addColumnArray, 1);
+t3lib_extMgm::addToAllTCAtypes('fe_users', 'tx_ecassociation_group');
+$TCA['fe_users']['ctrl']['type'] = 'association_group';
+
 ?>

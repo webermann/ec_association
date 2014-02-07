@@ -192,7 +192,7 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		 */
 
 	Public Function setParent(Tx_EcAssociation_Domain_Model_Association $parent=NULL) {
-		$this->parent = $parent;
+		$this->association = $parent;
 	}
 
 		/**
@@ -209,19 +209,6 @@ Class Tx_EcAssociation_Domain_Model_Association Extends Tx_Extbase_DomainObject_
 		$this->subassociation->attach($association);
 	}
 	
-		/**
-		 *
-		 * Adds a new group.
-		 *
-		 * @param Tx_EcAssociation_Domain_Model_Group $groups The new group
-		 * @return void
-		 *
-		 */
-
-	Public Function addGroup(Tx_EcAssociation_Domain_Model_Group $group) {
-		$association->setParent($this);
-		$this->groups->attach($group);
-	}
 
 }
 
