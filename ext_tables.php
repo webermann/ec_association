@@ -93,6 +93,6 @@ $addColumnArray = array(
 );
 t3lib_extMgm::addTCAcolumns('fe_users', $addColumnArray, 1);
 t3lib_extMgm::addToAllTCAtypes('fe_users', 'tx_ecassociation_group');
-$TCA['fe_users']['ctrl']['type'] = 'association_group';
+//$TCA['fe_users']['ctrl']['type'] = 'association_group'; dies kann wahrscheinlich weg... kommt zum fehler im fe und im be wenn es mit tx_ec... beginnt
 
 ?>

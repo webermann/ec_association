@@ -33,5 +33,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	Array ( 'Association' => 'index,show' ),
 	Array ( 'Association' => 'index,show' )
 );
+if (TYPO3_MODE=='FE'){
+	$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['sr_feuser_register']['extendingTCA'][] = 'extbase';
+}
 
 ?>
