@@ -40,7 +40,7 @@
 	 */
 
 Class Tx_EcAssociation_Domain_Repository_GroupRepository Extends Tx_Extbase_Persistence_Repository {
-
+	protected $defaultOrderings = array ('name' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING);
 
 
 		/**
