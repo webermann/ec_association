@@ -4,6 +4,7 @@ CREATE TABLE tx_ecassociation_domain_model_association (
 	
 	name tinytext,
 	association int(11) unsigned DEFAULT '0',
+	groups int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
