@@ -47,6 +47,7 @@ $TCA['tx_ecassociation_domain_model_association'] = array (
 		'transOrigPointerField'    => 'l18n_parent',
 		'transOrigDiffSourceField' => 'l18n_diffsource',
 		'delete'                   => 'deleted',
+		'default_sortby'           => ' ORDER BY name ASC',
 		'enablecolumns'            => array ( 'disabled' => 'hidden' ),
 		'dynamicConfigFile'        => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Association.php',
 		'iconfile'                 => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ecassociation_domain_model_association.gif'
@@ -69,6 +70,7 @@ $TCA['tx_ecassociation_domain_model_group'] = array (
 		'transOrigPointerField'    => 'l18n_parent',
 		'transOrigDiffSourceField' => 'l18n_diffsource',
 		'delete'                   => 'deleted',
+		'default_sortby'           => ' ORDER BY name ASC',
 		'enablecolumns'            => array ( 'disabled' => 'hidden' ),
 		'dynamicConfigFile'        => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Group.php',
 		'iconfile'                 => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ecassociation_domain_model_group.gif'
@@ -87,12 +89,12 @@ $addColumnArray = array(
 			'type' => 'select',
 			'foreign_class' => 'Tx_EcAssociation_Domain_Model_Group',
 			'foreign_table' => 'tx_ecassociation_domain_model_group',
+			'foreign_table_where' => 'ORDER BY name ASC',
 			'maxitems' => 1,
 		)
 	),
 );
 t3lib_extMgm::addTCAcolumns('fe_users', $addColumnArray, 1);
 t3lib_extMgm::addToAllTCAtypes('fe_users', 'tx_ecassociation_group');
-//$TCA['fe_users']['ctrl']['type'] = 'association_group'; dies kann wahrscheinlich weg... kommt zum fehler im fe und im be wenn es mit tx_ec... beginnt
 
 ?>
